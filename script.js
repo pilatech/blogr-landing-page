@@ -13,8 +13,17 @@ closeBtn.addEventListener('click', () => {
 
 submenuOpeners.forEach(item => {
  item.addEventListener('click', (e) => {
-  e.preventDefault()
-  e.target.classList.toggle('submenu-active')
+  toggleMenu(e)
  })
 })
 
+function toggleMenu(e){
+ e.preventDefault()
+ submenuOpeners.forEach(sub => {
+  if(sub !== e.target){
+   sub.classList.remove('submenu-active')
+  } else {
+   e.target.classList.toggle('submenu-active')
+  }
+ })
+}
